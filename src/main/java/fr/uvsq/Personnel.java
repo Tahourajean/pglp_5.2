@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Personnel implements Personne,Serializable
 {
+    private int numero;
     private final String nom;
     private final String prenom;
     private final LocalDate dateNaiss;
@@ -25,6 +26,7 @@ public class Personnel implements Personne,Serializable
 
     public static class Builder
 {   //parametre obligatoire
+    private final int numero;
     private final String nom;
     private final String prenom;
     //parametre optionnels
@@ -32,9 +34,9 @@ public class Personnel implements Personne,Serializable
     private  List<Telephone> telephones = new ArrayList<>();
     
    
-   public Builder(String nom, String prenom)
+   public Builder(int numero,String nom, String prenom)
    {
-
+        this.numero=numero;
    	this.nom=nom;
    	this.prenom=prenom;
    }
@@ -79,7 +81,7 @@ public class Personnel implements Personne,Serializable
     public Personnel utilisationPers()
     {
         Personnel p;
-        p = new Personnel.Builder("Simporé","Naimatou")
+        p = new Personnel.Builder(1,"Simporé","Naimatou")
                 .ajouterTelephone(new Telephone("75221521","0751548227" ,"72556688")).build();
         p.toString();
         return p;
@@ -100,6 +102,10 @@ public class Personnel implements Personne,Serializable
 
     public List<Telephone> getTelephones() {
         return telephones;
+    }
+
+    public int getNumero() {
+        return numero;
     }
    
    

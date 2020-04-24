@@ -14,11 +14,9 @@ import java.sql.DriverManager;
  */
 public class ConnectDB {
     
-    
+   
 
-
-
-  public void connect() {
+  public Connection connect() {
   Connection conn = null;
   String url = "jdbc:derby://localhost:1527/";
   String dbName = "personnelDB";
@@ -29,11 +27,12 @@ public class ConnectDB {
   Class.forName(driver).newInstance();
   conn = DriverManager.getConnection(url+dbName,userName,password);
   System.out.println("Connected to the database");
-  conn.close();
+  //conn.close();
   System.out.println("Disconnected from database");
   } catch (Exception e) {
   e.printStackTrace();
   }
+  return conn;
   }
   
   
@@ -41,4 +40,3 @@ public class ConnectDB {
 
     
     
-
