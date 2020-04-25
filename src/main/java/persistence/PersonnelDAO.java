@@ -45,7 +45,7 @@ public class PersonnelDAO  extends DAO<Personnel>{
 
     @Override
     public Personnel find(String numero) {
-        Personnel p=new Personnel();
+        Personnel p = null;
         try {
             PreparedStatement prepare=connect.
                     prepareStatement("SELECT * from personnel where numero=numero");
