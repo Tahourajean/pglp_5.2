@@ -18,8 +18,8 @@ public abstract class DAO<T>
      ConnectDB conndb=new ConnectDB();
      protected Connection connect=conndb.connect();
      public abstract T create(T obj);
-     public abstract T update(T obj);
-     public abstract T delete(T obj);
+     public abstract int update(T obj);
+     public abstract int  delete(T obj);
      public abstract T find(String obj);
     
 }

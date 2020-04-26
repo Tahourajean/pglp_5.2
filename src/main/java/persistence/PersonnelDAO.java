@@ -21,7 +21,7 @@ public class PersonnelDAO  extends DAO<Personnel>{
     public Personnel create(Personnel obj) {
         try {
             PreparedStatement prepare=connect.
-                    prepareStatement("INSERT INTO personnel(numero,nom,prenom) values(?,? ,?)");
+            prepareStatement("INSERT INTO personnel(numero,nom,prenom) values(?,? ,?)");
             prepare.setInt(1, obj.getNumero());
             prepare.setString(2, obj.getNom());
             prepare.setString(3, obj.getPrenom());
@@ -33,14 +33,34 @@ public class PersonnelDAO  extends DAO<Personnel>{
     }
 
     @Override
-    public Personnel update(Personnel objet) {
+    public int update(Personnel obj) {
+        int res = 0;
+        try {
+            PreparedStatement prepare=connect.
+            prepareStatement("UPDATE Personnel set nom= ?, prenom=? where numero=?");
+            prepare.setString(1, obj.getNom());
+            prepare.setString(2, obj.getPrenom());
+            prepare.setInt(3, obj.getNumero());
+            res=prepare.executeUpdate();
+            
+        } catch (Exception e) {
+        }
        
-        return objet;
+        return res;
     }
 
     @Override
-    public Personnel delete(Personnel objet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int delete(Personnel obj) {
+        int res=0;
+        try {
+            PreparedStatement prepare=connect.
+            prepareStatement("DELETE FROM personnel where numero=?");
+            prepare.setInt(1, obj.getNumero());
+            res=prepare.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+        return res;
     }
 
     @Override
