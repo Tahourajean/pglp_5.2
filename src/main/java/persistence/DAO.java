@@ -12,6 +12,7 @@ import java.sql.Connection;
 /**
  *
  * @author USER
+ * @param <T>
  */
 public abstract class DAO<T> 
 {

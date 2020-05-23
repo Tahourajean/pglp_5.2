@@ -41,8 +41,7 @@ public class PersonnelDAO  extends DAO<Personnel>{
             prepare.setString(1, obj.getNom());
             prepare.setString(2, obj.getPrenom());
             prepare.setInt(3, obj.getNumero());
-            res=prepare.executeUpdate();
-            
+            res=prepare.executeUpdate();             
         } catch (Exception e) {
         }
        
@@ -68,7 +67,7 @@ public class PersonnelDAO  extends DAO<Personnel>{
         Personnel p = null;
         try {
             PreparedStatement prepare=connect.
-                    prepareStatement("SELECT * from personnel where numero=numero");
+            prepareStatement("SELECT * from personnel where numero=numero");
             prepare.setString(1, numero);
             ResultSet result=prepare.executeQuery();
             if(result.first())
